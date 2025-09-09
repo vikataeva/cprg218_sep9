@@ -18,3 +18,69 @@ h3 { font-size: var(--step-3); line-height: 1.2; }
 h4 { font-size: var(--step-2); }
 h5 { font-size: var(--step-1); }
 h6 { font-size: var(--step-0); text-transform: uppercase; letter-spacing: .08em; color: hsl(var(--muted)); }
+
+/* Base reset for lists */
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+  color: hsl(var(--text, 222 22% 15%));
+}
+
+/* Unordered list */
+ul {
+  list-style: none;
+}
+ul li {
+  position: relative;
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+}
+ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.5em;
+  height: 0.5em;
+  background: hsl(var(--brand, 262 83% 57%));
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: background 0.2s ease;
+}
+ul li:hover::before {
+  background: hsl(var(--brand-600, 262 83% 50%));
+}
+
+/* Ordered list */
+ol {
+  counter-reset: custom-counter;
+  list-style: none;
+}
+ol li {
+  counter-increment: custom-counter;
+  margin: 0.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+ol li::before {
+  content: counter(custom-counter) ".";
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-weight: 600;
+  color: hsl(var(--brand, 262 83% 57%));
+  transition: color 0.2s ease;
+}
+ol li:hover::before {
+  color: hsl(var(--brand-600, 262 83% 50%));
+}
+
+/* Nested lists */
+ul ul, ol ol, ul ol, ol ul {
+  margin: 0.5rem 0 0.5rem 1.25rem;
+  font-size: 0.95em;
+  opacity: 0.85;
+  border-left: 1px solid hsl(var(--border, 220 13% 91%));
+  padding-left: 1rem;
+}
